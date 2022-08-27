@@ -1,5 +1,33 @@
 <h3>Welcome to Wissen Coding Challenge!</h3>
 
-
 Your login details: <br>
-<p>Username: {{user?.username}}</p>
+<p>Username: {{username}}</p>
+
+<div class="container">
+<div *ngIf="!isEmpty">
+  <h2 class="display-6 text-center">
+    Displaying Details of {{ listUserDetails.data.length }} Users
+  </h2>
+</div>
+<br />
+<table class="text-center table table-hover table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th class="text-center" scope="col">ID</th>
+      <th class="text-center" scope="col">Name</th>
+      <th class="text-center" scope="col">COLOR</th>
+      <th class="text-center" scope="col">Year</th>
+      <th class="text-center" scope="col">Pantone_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of userdata">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.color }}</td>
+      <td>{{ user.year }}</td>
+      <td>{{ user.pantone_value }}</td>
+    </tr>
+  </tbody>
+</table>
+</div>

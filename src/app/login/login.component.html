@@ -1,29 +1,45 @@
-<div>
+<div class="container">
   <div>
-    <h3>Hello there, Sign in to continue</h3>
-
-    <div>
+    <img src="https://drive.google.com/uc?export=view&id=1hvRAGrdq0SqFBZApx2--IcuDf-DOmOBH" alt="">
+    <h4>Hello there, Sign in to continue</h4>
+    <div class="alert alert-danger" *ngIf="message">
+      <p>{{ message }}</p>
+    </div>
+    <div class="form-group">
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div>
-          <label>Username/Email</label>
-          <input type="text" />
-          <div>
-            <!-- <label>
-              Username is required
-            </label> -->
+          <label for="Email">Email</label><br>
+          <input type="text" id="userName" [formControlName]="'userName'" />
+          <div *ngIf="(
+            loginForm.get('userName').dirty ||
+            loginForm.get('userName').touched
+           ) &&
+           loginForm.get('userName').invalid"
+              class="alert alert-danger">
+              Username is invalid
           </div>
         </div>
         <div>
-          <label>Password</label>
-          <input />
-          <div>
-            <!-- <label>
-              Password is required
-            </label> -->
+          <label for="Password">Password</label><br>
+          <input type="password" id="password" [formControlName]="'password'" />
+          <div *ngIf="(
+            loginForm.get('password').dirty ||
+            loginForm.get('password').touched
+           ) &&
+           loginForm.get('password').invalid"
+              class="alert alert-danger">
+              Password is invalid
           </div>
         </div>
-        <button>Login</button>
+        <div>
+          <input type="checkbox" [formControlName]="'acceptTerms'"/>By creating or logging into an account, ypu are agreeing with our 
+          <strong>Terms & Conditions</strong> and <strong>Privacy Policy</strong>
+        </div>
+        <button class="btn btn-primary" [disabled]="!loginForm.valid">Next</button>
       </form>
     </div>
+  </div>
+  <div class="footer">
+    Signin with Company SSO
   </div>
 </div>

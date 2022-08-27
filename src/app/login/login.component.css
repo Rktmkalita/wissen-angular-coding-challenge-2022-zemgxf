@@ -1,3 +1,20 @@
-.error-label {
-  color: red;
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.container {
+  margin-top: 10px;
+}
+
+.icon {
+  width: 100px;
+  height: 60px;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
